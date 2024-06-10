@@ -1,0 +1,23 @@
+/*Vitória Karoline de Carvalho Bernardo*/
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    border: 5px solid #4CAF50;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.image-container img:hover {
+    border-color: #FF5733;
+}

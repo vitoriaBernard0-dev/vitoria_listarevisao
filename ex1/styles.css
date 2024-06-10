@@ -1,0 +1,48 @@
+/* Vitória Karoline de Carvalho Bernardo */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #welcome {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  #welcome:hover {
+    color: #FF5733;
+  }
+  
+  #welcome::first-letter {
+    font-size: 36px;
+  }
+  
+  #btn-welcome {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #btn-welcome:hover {
+    background-color: #45a049;
+  }
+  

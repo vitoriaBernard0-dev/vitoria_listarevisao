@@ -1,0 +1,25 @@
+/* Vitória Karoline de Carvalho Bernardo */
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 20px auto;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  #addRowBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
