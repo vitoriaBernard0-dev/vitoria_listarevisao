@@ -1,10 +1,8 @@
 // Vitória Karoline de Carvalho Bernardo
 function toggleNavbar() {
-    var x = document.getElementById("navbar");
-    if (x.className === "navbar") {
-      x.className += " responsive";
-    } else {
-      x.className = "navbar";
-    }
-  }
-  
+  var navbar = document.getElementById("navbar");
+  navbar.classList.toggle("responsive");
+  var icon = document.querySelector(".icon i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-times");
+}
