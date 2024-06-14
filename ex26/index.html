@@ -1,0 +1,110 @@
+<!-- Vitória Karoline de Carvalho Bernardo -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de Bate-Papo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chat {
+            max-width: 600px;
+            width: 100%;
+            background-color: #ffffff;
+            border: 2px solid #009688;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #messages {
+            height: 300px;
+            border: 1px solid #b2dfdb;
+            padding: 10px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        #messages div {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e0f2f1;
+            word-wrap: break-word;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #009688;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        input {
+            flex: 1;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #009688;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00796b;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat">
+        <h1 style="color: #009688; text-align: center;">Sala de Bate-Papo</h1>
+        <div id="messages"></div>
+        <div class="input-container">
+            <input id="message" autocomplete="off" placeholder="Digite sua mensagem"/>
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        var socket = io('http://127.0.0.1:5000');
+
+        socket.on('connect', function() {
+            console.log('Conectado ao servidor');
+        });
+
+        socket.on('message', function(msg){
+            var messages = document.getElementById('messages');
+            var message = document.createElement('div');
+            message.textContent = msg;
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        });
+
+        function sendMessage() {
+            var input = document.getElementById('message');
+            var message = input.value;
+            if (message.trim()) {
+                socket.send(message);
+                input.value = '';
+                var messages = document.getElementById('messages');
+                var messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                messages.appendChild(messageElement);
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
